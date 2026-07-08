@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+src-tauri/target/
+src-tauri/gen/
+*.tsbuildinfo
+
+# Coverage and caches
+coverage/
+.turbo/
+.vite/
+.eslintcache
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+*/.DS_Store
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Imported screenshot source files copied into docs/assets
+/dashboard.png
+/mcpmanagement.png
+/search.png
+/setting.png
+
+# Local design scratch files
+.superdesign/

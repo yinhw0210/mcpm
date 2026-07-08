@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">MCPM dashboard screenshot placeholder</title>
+  <desc id="desc">A placeholder frame for the dashboard screenshot.</desc>
+  <rect width="1440" height="900" fill="#0f172a"/>
+  <rect x="40" y="40" width="1360" height="820" rx="24" fill="#111827" stroke="#334155" stroke-width="2"/>
+  <rect x="72" y="72" width="220" height="756" rx="14" fill="#0b1220"/>
+  <rect x="324" y="82" width="360" height="96" rx="12" fill="#172033"/>
+  <rect x="704" y="82" width="360" height="96" rx="12" fill="#172033"/>
+  <rect x="324" y="220" width="740" height="360" rx="12" fill="#172033"/>
+  <rect x="1090" y="82" width="278" height="498" rx="12" fill="#172033"/>
+  <rect x="324" y="616" width="1044" height="170" rx="12" fill="#172033"/>
+  <text x="720" y="424" text-anchor="middle" fill="#e5e7eb" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="700">Dashboard screenshot</text>
+  <text x="720" y="472" text-anchor="middle" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="24">Replace this SVG with a real MCPM dashboard capture.</text>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">MCPM registry search screenshot placeholder</title>
+  <desc id="desc">A placeholder frame for the registry search screenshot.</desc>
+  <rect width="1440" height="900" fill="#0f172a"/>
+  <rect x="82" y="82" width="1276" height="96" rx="16" fill="#172033" stroke="#334155"/>
+  <rect x="82" y="236" width="380" height="220" rx="16" fill="#172033"/>
+  <rect x="530" y="236" width="380" height="220" rx="16" fill="#172033"/>
+  <rect x="978" y="236" width="380" height="220" rx="16" fill="#172033"/>
+  <rect x="82" y="512" width="380" height="220" rx="16" fill="#172033"/>
+  <rect x="530" y="512" width="380" height="220" rx="16" fill="#172033"/>
+  <rect x="978" y="512" width="380" height="220" rx="16" fill="#172033"/>
+  <text x="720" y="396" text-anchor="middle" fill="#e5e7eb" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="700">Registry search screenshot</text>
+  <text x="720" y="444" text-anchor="middle" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="24">Replace this SVG with a search and install capture.</text>
+</svg>

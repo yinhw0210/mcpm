@@ -1,0 +1,76 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+jobs:
+  publish:
+    name: Build ${{ matrix.name }}
+    runs-on: ${{ matrix.platform }}
+    permissions:
+      contents: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: macOS Apple Silicon
+            platform: macos-latest
+            args: --target aarch64-apple-darwin
+            rust-target: aarch64-apple-darwin
+
+          - name: macOS Intel
+            platform: macos-13
+            args: --target x86_64-apple-darwin
+            rust-target: x86_64-apple-darwin
+
+          - name: Windows
+            platform: windows-latest
+            args: ""
+            rust-target: ""
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Add Rust target
+        if: matrix.rust-target != ''
+        run: rustup target add ${{ matrix.rust-target }}
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Check product copy and translations
+        run: pnpm run check:copy
+
+      - name: Typecheck frontend
+        run: pnpm run typecheck
+
+      - name: Build and upload release assets
+        uses: tauri-apps/tauri-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: ${{ github.ref_name }}
+          releaseName: "MCPM ${{ github.ref_name }}"
+          releaseBody: "Release notes: https://github.com/${{ github.repository }}/blob/main/docs/releases/${{ github.ref_name }}.md"
+          releaseDraft: true
+          prerelease: false
+          args: ${{ matrix.args }}

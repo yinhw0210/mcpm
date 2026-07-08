@@ -1,0 +1,40 @@
+name: Agent support request
+description: Request support for a new AI agent or config schema change.
+title: "[Agent]: "
+labels: ["agent-support"]
+body:
+  - type: input
+    id: agent
+    attributes:
+      label: Agent name
+      placeholder: "Example Agent"
+    validations:
+      required: true
+  - type: input
+    id: docs
+    attributes:
+      label: Official docs or schema link
+      placeholder: "https://..."
+    validations:
+      required: true
+  - type: textarea
+    id: paths
+    attributes:
+      label: Config paths
+      description: Include global and project paths when known.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: schema
+    attributes:
+      label: Example config
+      description: Redact secrets.
+      render: json
+    validations:
+      required: true
+  - type: textarea
+    id: transports
+    attributes:
+      label: Supported transports and optional fields
+      placeholder: "stdio, HTTP, SSE, timeout, OAuth scopes, auto-approval"
