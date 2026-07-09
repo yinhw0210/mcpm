@@ -63,6 +63,8 @@ gh release upload v0.1.0 src-tauri/target/release/bundle/msi/*.msi
 gh release upload v0.1.0 src-tauri/target/release/bundle/nsis/*setup.exe
 ```
 
+Unsigned macOS builds may also include `*_with-helper.dmg` assets. These DMGs add `Repair MCPM.command` beside `MCPM.app` and the Applications shortcut. The helper removes the download quarantine attribute from `/Applications/MCPM.app`; it does not disable Gatekeeper or change system-wide security settings.
+
 Publish the draft after checking the release page:
 
 ```bash

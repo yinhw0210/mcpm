@@ -1,13 +1,14 @@
 // 设置页面 — Minimal Tool 风格 (A2 Design)
 
 import { useEffect, useState } from "react";
-import { Power, Terminal, Info } from "lucide-react";
+import { ExternalLink, Github, Power, Terminal, Info } from "lucide-react";
+import { open } from "@tauri-apps/plugin-shell";
 import { Switch } from "@/components/ui/switch";
 import { useSettingsStore } from "@/stores/settingsStore";
 import { detectRuntimes } from "@/lib/tauri";
 import type { RuntimeInfo } from "@/lib/types";
 import { useLanguageStore } from "@/stores/languageStore";
-import { APP_NAME } from "@/lib/branding";
+import { APP_NAME, GITHUB_URL } from "@/lib/branding";
 
 const text = {
   zh: {
@@ -25,6 +26,8 @@ const text = {
     about: "关于",
     systemInfo: "系统信息",
     version: "版本",
+    github: "GitHub",
+    openRepository: "打开仓库",
     techStack: "技术栈",
     supportedAgents: "支持智能体数",
     runtimeDescriptions: {
@@ -50,6 +53,8 @@ const text = {
     about: "About",
     systemInfo: "System information",
     version: "Version",
+    github: "GitHub",
+    openRepository: "Open repository",
     techStack: "Tech stack",
     supportedAgents: "Supported agents",
     runtimeDescriptions: {
@@ -163,6 +168,18 @@ export function Settings() {
               <div className="px-4 py-3 flex items-center justify-between">
                 <span className="text-sm text-[var(--muted-foreground)]">{t.version}</span>
                 <span className="text-sm font-mono">v0.1.0</span>
+              </div>
+              <div className="px-4 py-3 flex items-center justify-between gap-4">
+                <span className="text-sm text-[var(--muted-foreground)]">{t.github}</span>
+                <button
+                  type="button"
+                  onClick={() => void open(GITHUB_URL).catch(console.error)}
+                  className="inline-flex min-w-0 items-center gap-1.5 rounded-md border border-[var(--border)] px-2.5 py-1.5 text-xs font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--accent)]"
+                >
+                  <Github className="h-3.5 w-3.5 shrink-0" />
+                  <span className="truncate">{t.openRepository}</span>
+                  <ExternalLink className="h-3 w-3 shrink-0 text-[var(--muted-foreground)]" />
+                </button>
               </div>
               <div className="px-4 py-3 flex items-center justify-between">
                 <span className="text-sm text-[var(--muted-foreground)]">{t.techStack}</span>

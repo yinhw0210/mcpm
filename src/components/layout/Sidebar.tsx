@@ -1,10 +1,11 @@
 // 侧边导航栏 — 图标 + 文字标签
 
 import { NavLink } from "react-router-dom";
-import { Languages, LayoutDashboard, Settings2, Search, Network } from "lucide-react";
+import { Github, Languages, LayoutDashboard, Settings2, Search, Network } from "lucide-react";
+import { open } from "@tauri-apps/plugin-shell";
 import { cn } from "@/lib/utils";
 import { useLanguageStore } from "@/stores/languageStore";
-import { APP_NAME } from "@/lib/branding";
+import { APP_NAME, GITHUB_URL } from "@/lib/branding";
 
 const labels = {
   zh: {
@@ -13,7 +14,9 @@ const labels = {
     mcp: "MCP 管理",
     registry: "注册表搜索",
     settings: "设置",
+    github: "GitHub",
     language: "中文",
+    githubTitle: "打开 GitHub 仓库",
     languageTitle: "切换语言",
   },
   en: {
@@ -22,7 +25,9 @@ const labels = {
     mcp: "MCP Management",
     registry: "Registry Search",
     settings: "Settings",
+    github: "GitHub",
     language: "EN",
+    githubTitle: "Open GitHub repository",
     languageTitle: "Switch language",
   },
 };
@@ -72,6 +77,14 @@ export function Sidebar() {
       </nav>
 
       <div className="px-2">
+        <button
+          onClick={() => void open(GITHUB_URL).catch(console.error)}
+          title={t.githubTitle}
+          className="mb-1 flex w-full items-center gap-2.5 rounded-md px-2.5 py-2 text-sm font-medium text-[var(--muted-foreground)] transition-colors hover:bg-[var(--accent)] hover:text-[var(--accent-foreground)]"
+        >
+          <Github className="h-4 w-4 shrink-0" />
+          <span className="truncate">{t.github}</span>
+        </button>
         <button
           onClick={toggleLanguage}
           title={t.languageTitle}
