@@ -21,19 +21,16 @@ jobs:
             platform: macos-latest
             args: --target aarch64-apple-darwin
             rust-target: aarch64-apple-darwin
-            mac-arch: aarch64
 
           - name: macOS Intel
             platform: macos-15-intel
             args: --target x86_64-apple-darwin
             rust-target: x86_64-apple-darwin
-            mac-arch: x64
 
           - name: Windows
             platform: windows-latest
             args: ""
             rust-target: ""
-            mac-arch: ""
 
     steps:
       - name: Checkout
@@ -77,20 +74,3 @@ jobs:
           releaseDraft: true
           prerelease: false
           args: ${{ matrix.args }}
-
-      - name: Build helper DMG
-        if: matrix.mac-arch != ''
-        shell: bash
-        run: |
-          chmod +x scripts/macos/create-helper-dmg.sh scripts/macos/repair-mcpm.command
-          VERSION="${GITHUB_REF_NAME#v}"
-          APP_PATH="src-tauri/target/${{ matrix.rust-target }}/release/bundle/macos/MCPM.app"
-          OUTPUT_DMG="src-tauri/target/${{ matrix.rust-target }}/release/bundle/dmg/MCPM_${VERSION}_${{ matrix.mac-arch }}_with-helper.dmg"
-          scripts/macos/create-helper-dmg.sh "$APP_PATH" "$OUTPUT_DMG" "MCPM ${GITHUB_REF_NAME}"
-          echo "HELPER_DMG=$OUTPUT_DMG" >> "$GITHUB_ENV"
-
-      - name: Upload helper DMG
-        if: matrix.mac-arch != ''
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release upload "${{ github.ref_name }}" "$HELPER_DMG" --clobber
