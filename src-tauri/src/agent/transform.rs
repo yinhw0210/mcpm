@@ -595,6 +595,7 @@ pub fn transform_config(
         AgentType::Opencode => transform_opencode(server_name, config),
         AgentType::GitHubCopilotCli => transform_copilot(server_name, config, local),
         AgentType::DeepseekReasonix => transform_standard(server_name, config),
+        AgentType::Zcode => transform_standard(server_name, config),
     }
 }
 

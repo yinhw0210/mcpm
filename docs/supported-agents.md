@@ -31,6 +31,7 @@ This matrix mirrors `src-tauri/src/agent/definitions.rs`. Update both places whe
 | WorkBuddy | `workbuddy` | `.workbuddy/mcp.json` | `~/.workbuddy/mcp.json` | stdio, HTTP, SSE | None |
 | Windsurf | `windsurf` | Not supported | `~/.codeium/windsurf/mcp_config.json` | stdio, HTTP, SSE | None |
 | Zed | `zed` | `.zed/settings.json` | Zed app settings path for the current OS | stdio, HTTP, SSE | None |
+| ZCode | `zcode` | `.zcode/config.json` | `~/.zcode/cli/config.json` | stdio, HTTP, SSE | None |
 
 ## Optional fields
 

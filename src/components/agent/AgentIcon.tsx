@@ -37,6 +37,7 @@ export function getAgentIconPath(agentType: string): string {
     "workbuddy": "/agents/workbuddy.svg",
     "windsurf": "/agents/windsurf.ico",
     "zed": "/agents/zed.png",
+    "zcode": "/agents/zcode.svg",
   };
   return iconMap[agentType] ?? "";
 }

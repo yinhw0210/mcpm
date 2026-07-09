@@ -45,6 +45,8 @@ pub enum AgentType {
     WorkBuddy,
     Windsurf,
     Zed,
+    #[serde(rename = "zcode")]
+    Zcode,
 }
 
 impl AgentType {
@@ -75,6 +77,7 @@ impl AgentType {
             "workbuddy" => Some(Self::WorkBuddy),
             "windsurf" => Some(Self::Windsurf),
             "zed" => Some(Self::Zed),
+            "zcode" => Some(Self::Zcode),
             _ => None,
         }
     }
@@ -106,6 +109,7 @@ impl AgentType {
             Self::WorkBuddy => "workbuddy",
             Self::Windsurf => "windsurf",
             Self::Zed => "zed",
+            Self::Zcode => "zcode",
         }
     }
 }
