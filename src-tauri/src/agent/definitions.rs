@@ -444,6 +444,19 @@ pub fn get_all_agents() -> Vec<AgentConfig> {
             supported_fields: &[],
             unsupported_transport_message: None,
         },
+        AgentConfig {
+            agent_type: AgentType::Zcode,
+            display_name: "ZCode",
+            config_path: format!("{}/.zcode/cli/config.json", h),
+            local_config_path: Some(".zcode/config.json"),
+            project_detect_paths: &[".zcode"],
+            config_key: "mcp.servers",
+            local_config_key: None,
+            format: ConfigFormat::Json,
+            supported_transports: &["stdio", "http", "sse"],
+            supported_fields: &[],
+            unsupported_transport_message: None,
+        },
     ]
 }
 

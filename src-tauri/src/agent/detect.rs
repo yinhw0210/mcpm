@@ -115,6 +115,7 @@ fn is_agent_globally_installed(agent: &AgentConfig) -> bool {
             }
         }
         AgentType::DeepseekReasonix => Path::new(&format!("{}/.reasonix", home_dir_str())).exists(),
+        AgentType::Zcode => Path::new(&format!("{}/.zcode/cli", home_dir_str())).exists(),
     }
 }
 

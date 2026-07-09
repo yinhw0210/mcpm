@@ -26,7 +26,8 @@ export type AgentType =
   | "vscode"
   | "workbuddy"
   | "windsurf"
-  | "zed";
+  | "zed"
+  | "zcode";
 
 export type TransportType = "http" | "sse";
 
