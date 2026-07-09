@@ -1,6 +1,6 @@
 // MCP 管理器 — 左侧 Server 菜单 + 右侧 Agent 三列卡片
 
-import { useEffect, useMemo, useState, type MouseEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type MouseEvent } from "react";
 import { Link } from "react-router-dom";
 import {
   ChevronRight,
@@ -180,11 +180,19 @@ export function McpManager() {
   const [formOpen, setFormOpen] = useState(false);
   const [otherAgentsOpen, setOtherAgentsOpen] = useState(false);
   const [toggling, setToggling] = useState<string | null>(null);
+  const agentListRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     fetchAgents();
     fetchAgentsWithServers();
   }, [fetchAgents, fetchAgentsWithServers]);
+
+  // 切换标签页或服务时，重置右侧智能体列表滚动位置到顶部
+  useEffect(() => {
+    if (agentListRef.current) {
+      agentListRef.current.scrollTop = 0;
+    }
+  }, [agentView, selectedMcp]);
 
   const detectedAgentTypes = useMemo(
     () => new Set(agentsWithServers.filter((agent) => agent.detected).map((agent) => agent.agentType)),
@@ -401,8 +409,8 @@ export function McpManager() {
         </div>
       </header>
 
-      <div className="grid min-h-0 flex-1 grid-cols-[300px_minmax(0,1fr)] overflow-hidden">
-        <aside className="flex min-w-0 flex-col border-r border-[var(--border)] bg-[var(--card)]">
+      <div className="grid min-h-0 flex-1 grid-cols-[300px_minmax(0,1fr)] grid-rows-[minmax(0,1fr)] overflow-hidden">
+        <aside className="flex min-h-0 min-w-0 flex-col border-r border-[var(--border)] bg-[var(--card)]">
           <div className="border-b border-[var(--border)] p-3">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-[var(--muted-foreground)]" />
@@ -480,7 +488,7 @@ export function McpManager() {
           </div>
         </aside>
 
-        <main className="min-w-0 overflow-hidden">
+        <main className="min-h-0 min-w-0 overflow-hidden">
           {!activeGroup ? (
             <div className="flex h-full items-center justify-center p-8 text-sm text-[var(--muted-foreground)]">
               {t.selectServer}
@@ -561,7 +569,7 @@ export function McpManager() {
                 </div>
               </section>
 
-              <section className="min-h-0 flex-1 overflow-y-auto p-5">
+              <section ref={agentListRef} className="min-h-0 flex-1 overflow-y-auto p-5">
                 {visibleAgents.length === 0 ? (
                   <div className="rounded-lg border border-dashed border-[var(--border)] bg-[var(--card)] p-10 text-center text-sm text-[var(--muted-foreground)]">
                     {t.emptyAgents}
