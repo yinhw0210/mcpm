@@ -82,7 +82,7 @@ const cargoManifest = fs.readFileSync(path.join(root, "src-tauri/Cargo.toml"), "
 const cargoLock = fs.readFileSync(path.join(root, "src-tauri/Cargo.lock"), "utf8");
 const cargoVersion = cargoManifest.match(/^version = "([^"]+)"/m)?.[1];
 const cargoLockVersion = cargoLock.match(
-  /\[\[package\]\]\nname = "mcpm"\nversion = "([^"]+)"/,
+  /\[\[package\]\]\r?\nname = "mcpm"\r?\nversion = "([^"]+)"/,
 )?.[1];
 
 for (const [source, version] of Object.entries({
