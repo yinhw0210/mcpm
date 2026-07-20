@@ -8,7 +8,12 @@ import { useSettingsStore } from "@/stores/settingsStore";
 import { detectRuntimes } from "@/lib/tauri";
 import type { RuntimeInfo } from "@/lib/types";
 import { useLanguageStore } from "@/stores/languageStore";
-import { APP_NAME, GITHUB_URL } from "@/lib/branding";
+import {
+  APP_NAME,
+  APP_VERSION,
+  GITHUB_URL,
+  SUPPORTED_AGENT_COUNT,
+} from "@/lib/branding";
 
 const text = {
   zh: {
@@ -167,7 +172,7 @@ export function Settings() {
             <div className="divide-y divide-[var(--border)]">
               <div className="px-4 py-3 flex items-center justify-between">
                 <span className="text-sm text-[var(--muted-foreground)]">{t.version}</span>
-                <span className="text-sm font-mono">v0.1.0</span>
+                <span className="text-sm font-mono">v{APP_VERSION}</span>
               </div>
               <div className="px-4 py-3 flex items-center justify-between gap-4">
                 <span className="text-sm text-[var(--muted-foreground)]">{t.github}</span>
@@ -187,7 +192,7 @@ export function Settings() {
               </div>
               <div className="px-4 py-3 flex items-center justify-between">
                 <span className="text-sm text-[var(--muted-foreground)]">{t.supportedAgents}</span>
-                <span className="text-sm font-mono">25</span>
+                <span className="text-sm font-mono">{SUPPORTED_AGENT_COUNT}</span>
               </div>
             </div>
           </div>

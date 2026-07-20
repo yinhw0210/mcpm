@@ -12,7 +12,7 @@ import { startServerProcess, stopServerProcess, sendJsonRpc } from "@/lib/tauri"
 import { buildServerProbe, normalizeServerConfig } from "@/lib/serverProbes";
 import { toast } from "sonner";
 import { useLanguageStore } from "@/stores/languageStore";
-import { APP_ID } from "@/lib/branding";
+import { APP_ID, APP_VERSION } from "@/lib/branding";
 
 const text = {
   zh: {
@@ -169,7 +169,7 @@ export function ServerDetail() {
       params: {
         protocolVersion: "2024-11-05",
         capabilities: {},
-        clientInfo: { name: APP_ID, version: "0.1.0" },
+        clientInfo: { name: APP_ID, version: APP_VERSION },
       },
       id: 1,
     }, null, 2));

@@ -64,7 +64,7 @@ cargo test
 
 ## Supported agents
 
-MCPM currently supports 25 agent targets:
+MCPM currently supports 26 agent targets:
 
 | Agent family | Examples |
 | --- | --- |
