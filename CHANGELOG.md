@@ -6,9 +6,16 @@ This project follows the spirit of [Keep a Changelog](https://keepachangelog.com
 
 ## Unreleased
 
+## 0.1.1 - 2026-07-20
+
 ### Added
 
-- Release guide and versioned GitHub release note source files
+- ZCode agent detection, configuration, and icon support
+
+### Fixed
+
+- Restored independent scrolling for the server and agent lists on the MCP management page
+- Removed the macOS repair helper that could itself be blocked by Gatekeeper, and replaced it with documented recovery steps
 
 ## 0.1.0 - 2026-07-08
 
@@ -21,3 +28,4 @@ This project follows the spirit of [Keep a Changelog](https://keepachangelog.com
 - Stdio server debugging with live logs, process metrics, and JSON-RPC input
 - Runtime detection for Node.js, `npx`, Python, Bun, and `uvx`
 - Bilingual Chinese and English UI
+- Release guide and versioned GitHub release note source files
